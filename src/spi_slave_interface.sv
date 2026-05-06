@@ -109,9 +109,7 @@ module spi_slave_interface #(
     //   the shift register rotates on every shift_edge.
     // -------------------------------------------------------------------------
     assign miso_oe = ~cs_n_s;
-    assign miso    = miso_oe
-                   ? (LSB_FIRST ? tx_shift[0] : tx_shift[DATA_WIDTH-1])
-                   : 1'bz;
+    assign miso = miso_oe ? (LSB_FIRST ? tx_shift[0] : tx_shift[DATA_WIDTH-1]) : 1'b0;
 
     // -------------------------------------------------------------------------
     // RX shift register and rx_valid generation
